@@ -1,18 +1,18 @@
 # Taskflow Workspace
 
-Taskflow Workspace is a Laravel task-management application with a polished, self-contained static demo. The project now has a clearer product identity, a cleaned package manifest, and an automated GitHub Pages deployment for the demo surface.
+Taskflow Workspace is the original Laravel task-management project with a separate, polished static demo. The GitHub Pages site is an **experimental preview only**: it is not the original application, does not replace the Laravel backend, and should be treated as a presentation build rather than a production service.
 
-> **Live demo:** [Open Taskflow on GitHub Pages](https://mahmoudalmodalal.github.io/taskflow-workspace/)
+> **Experimental demo:** [Open Taskflow on GitHub Pages](https://mahmoudalmodalal.github.io/taskflow-workspace/). This is an independent preview and is separate from the original Laravel project.
 
 ## What changed
 
-The repository keeps the original Laravel application and its domain models, while adding a modern `demo/` workspace for the public-facing preview. The demo is intentionally client-only: tasks are persisted to `localStorage`, can be filtered and searched, and can be exported as JSON without needing a running PHP server.
+The repository keeps the original Laravel application and its domain models, while adding a separate `demo/` workspace for an experimental public-facing preview. The demo is intentionally client-only: tasks are persisted to `localStorage`, can be filtered and searched, and can be exported as JSON without needing a running PHP server. **The demo data and interface are not connected to the original Laravel database or authenticated routes.**
 
 | Area | Current setup |
 | --- | --- |
 | Product name | Taskflow Workspace |
 | Core application | Laravel task and category management |
-| Public demo | React + Vite under `demo/` |
+| Experimental demo | React + Vite under `demo/` |
 | Styling direction | Quiet Command Center: warm paper, ink, moss, and Saffron Signal |
 | Demo persistence | Browser `localStorage` |
 | Deployment | GitHub Pages via `.github/workflows/deploy-pages.yml` |
@@ -34,11 +34,11 @@ npm run build
 npm run preview
 ```
 
-The Pages workflow builds only `demo/`, so the demo remains deployable even when the Laravel backend is not available in the hosting environment.
+The Pages workflow builds only `demo/`, so the experimental preview remains deployable even when the Laravel backend is not available in the hosting environment.
 
 ## Run the Laravel application
 
-The backend continues to use the project’s existing Laravel setup. Follow the environment and database instructions in [`INSTALLATION.md`](INSTALLATION.md), then run the application through the normal Laravel development server. The public demo is not a replacement for authenticated backend routes; it is a lightweight, shareable product surface for evaluation and presentation.
+The backend continues to use the project’s existing Laravel setup. Follow the environment and database instructions in [`INSTALLATION.md`](INSTALLATION.md), then run the application through the normal Laravel development server. The GitHub Pages site is not a replacement for authenticated backend routes; it is a lightweight, independent product surface for evaluation and presentation.
 
 ## Repository structure
 

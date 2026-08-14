@@ -157,6 +157,12 @@ export default function Home() {
         </div>
       </header>
 
+      <div className="demo-notice" role="note">
+        <span className="demo-notice-label">Experimental demo</span>
+        <p>This GitHub Pages preview is independent from the original Laravel application.</p>
+        <a href="https://github.com/MahmoudAlmodalal/taskflow-workspace" target="_blank" rel="noreferrer">View the original project <ArrowUpRight size={13} /></a>
+      </div>
+
       <div className="workspace">
         <aside className="sidebar">
           <div className="sidebar-intro">

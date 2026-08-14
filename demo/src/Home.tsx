@@ -51,6 +51,8 @@ const filters: Array<{ key: FilterKey; label: string }> = [
   { key: "done", label: "Completed" },
 ];
 
+const assetUrl = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+
 function readTasks() {
   try {
     const saved = window.localStorage.getItem("taskflow-tasks");
@@ -144,8 +146,8 @@ export default function Home() {
   return (
     <div className="app-shell">
       <header className="topbar">
-        <a className="brand" href="/" aria-label="Taskflow home">
-          <span className="brand-mark"><img src="/assets/taskflow-mark.png" alt="" /></span>
+        <a className="brand" href={import.meta.env.BASE_URL} aria-label="Taskflow home">
+          <span className="brand-mark"><img src={assetUrl("assets/taskflow-mark.png")} alt="" /></span>
           <span className="brand-name">taskflow<span>.</span></span>
         </a>
         <div className="topbar-actions">
@@ -191,7 +193,7 @@ export default function Home() {
               <p className="hero-description">A lighter way to see what is next, keep momentum, and close the loop.</p>
               <div className="hero-progress"><span style={{ width: `${completion}%` }} /><small>{completion}% of your list complete</small></div>
             </div>
-            <div className="hero-art" style={{ backgroundImage: "url('/assets/taskflow-calm-desk.jpg')" }} aria-hidden="true"><span className="hero-art-label">A clear desk<br /><strong>clears the mind.</strong></span></div>
+            <div className="hero-art" style={{ backgroundImage: `url('${assetUrl("assets/taskflow-calm-desk.jpg")}')` }} aria-hidden="true"><span className="hero-art-label">A clear desk<br /><strong>clears the mind.</strong></span></div>
           </section>
 
           <section className="task-section" aria-labelledby="tasks-heading">
@@ -218,7 +220,7 @@ export default function Home() {
 
             <div className="task-list">
               {visibleTasks.length ? visibleTasks.map((task) => <TaskRow key={task.id} task={task} onToggle={() => toggleTask(task.id)} onDelete={() => deleteTask(task.id)} />) : (
-                <div className="empty-state"><img src="/assets/taskflow-focus.jpg" alt="A paper path leading to a small spark" /><div><h3>No loops here.</h3><p>Try a new search or add the next action to your day.</p></div></div>
+                <div className="empty-state"><img src={assetUrl("assets/taskflow-focus.jpg")} alt="A paper path leading to a small spark" /><div><h3>No loops here.</h3><p>Try a new search or add the next action to your day.</p></div></div>
               )}
             </div>
             <div className="list-footer"><span><CheckCircle2 size={15} /> {completed} completed today</span><button className="more-button" aria-label="More task options"><MoreHorizontal size={18} /></button></div>
@@ -228,7 +230,7 @@ export default function Home() {
         <aside className="insight-column">
           <div className="insight-heading"><p className="eyebrow">A small read</p><button className="icon-button" aria-label="Filter insights"><Filter size={16} /></button></div>
           <section className="insight-card momentum-card"><div className="insight-card-top"><span className="insight-icon saffron-bg"><Flame size={17} /></span><span className="trend-tag">+12% this week</span></div><p className="metric-label">Momentum score</p><p className="metric-value">{Math.max(48, Math.min(98, 68 + completed * 5))}<small>/100</small></p><div className="momentum-bars"><i style={{ height: "36%" }} /><i style={{ height: "52%" }} /><i style={{ height: "48%" }} /><i style={{ height: "76%" }} /><i style={{ height: "66%" }} /><i className="today" style={{ height: `${Math.max(58, completion)}%` }} /></div><p className="insight-caption">You’re building a steady rhythm. Keep the next step small.</p></section>
-          <section className="insight-card week-card"><div className="insight-card-top"><span className="insight-icon moss-bg"><CalendarDays size={17} /></span><button className="card-kebab" aria-label="More weekly options"><MoreHorizontal size={17} /></button></div><p className="metric-label">This week</p><div className="week-stat"><strong>{completed + 8}</strong><span>tasks closed</span></div><div className="mini-calendar" aria-label="Weekly task activity"><span className="calendar-label">M</span><span className="calendar-label">T</span><span className="calendar-label">W</span><span className="calendar-label">T</span><span className="calendar-label">F</span><span className="calendar-label">S</span><span className="calendar-label">S</span><i /><i className="filled" /><i className="filled" /><i className="filled" /><i className="today-dot" /><i /><i /></div><img className="week-art" src="/assets/taskflow-calendar.jpg" alt="Abstract weekly planner on paper" /></section>
+          <section className="insight-card week-card"><div className="insight-card-top"><span className="insight-icon moss-bg"><CalendarDays size={17} /></span><button className="card-kebab" aria-label="More weekly options"><MoreHorizontal size={17} /></button></div><p className="metric-label">This week</p><div className="week-stat"><strong>{completed + 8}</strong><span>tasks closed</span></div><div className="mini-calendar" aria-label="Weekly task activity"><span className="calendar-label">M</span><span className="calendar-label">T</span><span className="calendar-label">W</span><span className="calendar-label">T</span><span className="calendar-label">F</span><span className="calendar-label">S</span><span className="calendar-label">S</span><i /><i className="filled" /><i className="filled" /><i className="filled" /><i className="today-dot" /><i /><i /></div><img className="week-art" src={assetUrl("assets/taskflow-calendar.jpg")} alt="Abstract weekly planner on paper" /></section>
           <section className="quote-card"><FileText size={18} /><p>“Clarity is not more information. It’s knowing what to do next.”</p><span>— Taskflow note</span></section>
         </aside>
       </div>
